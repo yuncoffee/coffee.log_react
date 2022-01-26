@@ -109,10 +109,46 @@ $positions: "static", "relative", "absolute", "fixed", "sticky";
     }
 }
 
+$lineDirections: "left", "right", "top", "btm";
+@each $lineDirection in $lineDirections {
+    $color : $sy-gray-04;
+    [s-before-line="#{$lineDirection}"]{
+        @if $lineDirection == "left"{
+            @include beforeLine($left: $color )
+        }
+
+        @if $lineDirection == "right"{
+            @include beforeLine($right: $color )
+        }
+        @if $lineDirection == "top"{
+            @include beforeLine($top: $color )
+        }
+        @if $lineDirection == "btm"{
+            @include beforeLine($btm: $color )
+        }
+    }
+}
+
 // gap 범위 0 ~ 64px
-@for $gaps from 0 to 64 {
+@for $gaps from -64 to 64 {
     [s-gap="#{$gaps}px"] {
         gap: #{$gaps}px;
+    }
+
+    [s-before-btm="#{$gaps}px"]{
+        &::before{
+            bottom: #{$gaps}px;
+        }
+    }
+    [s-before-left="#{$gaps}px"]{
+        &::before{
+            left: #{$gaps}px;
+        }
+    }
+    [s-before-right="#{$gaps}px"]{
+        &::before{
+            right: #{$gaps}px;
+        }
     }
 }
 
@@ -178,6 +214,12 @@ $spaces: 0, 2, 4, 6, 8, 12, 14, 16, 20, 24, 28, 30, 32, 36, 40, 48, 56, 64, 72,
     }
     [s-right="#{$space}px"] {
         right: #{$space}px;
+    }
+
+    [s-before-top="#{$space}px"]{
+        &::before{
+            top: #{$space}px;
+        }
     }
 }
 

@@ -1,12 +1,12 @@
 @charset "utf-8";
 
 // color
-$sy-pri: #206fd6;
+$sy-pri: rgb(35, 26, 15);
 $sy-pri-01: #004bb7;
 
 $sy-white: #ffffff;
 $sy-black: #2b2b2b;
-$sy-gray-01: #f8f8f8;
+$sy-gray-01: rgb(248, 248, 248);
 $sy-gray-02: #f6f6f6;
 $sy-gray-03: #ebebeb;
 $sy-gray-04: #e0e0e0;
@@ -35,56 +35,6 @@ $color-azure: #0089d6;
 
 $color-naver: #3cdf98;
 
-$color-icon-pri: $sy-pri-01;
-$color-inversion: $sy-white;
-
-// default color
-$bg-color: $sy-gray-01;
-$txt-color: #333;
-
-$color-txt: $sy-gray-01;
-$color-bg: $sy-gray-09;
-
-// component color
-$color-default: $sy-gray-05;
-// default-bg color
-$color-base: $sy-white;
-// modal-bg color
-$color-modal: $sy-white;
-// input-bg color
-$color-inputBg: $sy-gray-03;
-// pageHeader-bg color
-$color-pageHeader: $sy-white;
-// projectHeader-bg color
-$color-projectHeader: $sy-white;
-// nav-bg color
-$color-nav: $sy-white;
-// aside-bg color
-$color-aside: $sy-gray-03;
-// footer-bg color
-$color-footer: $sy-white;
-
-// myPage-bg color
-$color-Mypage: $sy-gray-02;
-$color-Mypage_nav: $sy-gray-02;
-$color-Mypage_main: $sy-gray-03;
-
-$color-card: $sy-white;
-
-$color-list: $sy-white;
-$color-list_li: $sy-gray-04;
-$color-list_hover: $sy-gray-05;
-
-$color-link: $sy-blue;
-
-// btn color
-$btn-inversion: $sy-gray-01;
-$btn-pri: $sy-pri;
-$btn-pri_hover: $sy-pri-01;
-$btn-pri_disabled: $sy-gray-05;
-
-$btn-icon: $sy-gray-06;
-$btn-icon_hover: $sy-pri;
 $color-theme: $sy-pri;
 
 // codeEditor start
@@ -107,13 +57,6 @@ $toast-txt: $color-theme;
 :root {
     --colorCspTheme: #{$color-theme}; //theme hex
     --colorCspTheme-rgb: 0, 0, 0; //theme rgb
-    --colorInputBg: #{$sy-gray-03}; //option bg
-    --editDefault: #{$edit-default};
-    --editString: #{$edit-string};
-    --editFunction: #{$edit-function};
-    --editOperator: #{$edit-operator};
-    --editNumeric: #{$edit-numeric};
-    --editBg: #{$edit-bg};
     --color-pri: 32, 111, 214;
 
     --colorCsp: 206, 39%;
@@ -123,11 +66,6 @@ $toast-txt: $color-theme;
     --colorCspTheme-hsl-darker: hsla(var(--colorCsp), calc(var(--l) - 5%), 1);
     --colorCspTheme-hsl-darkest: hsla(var(--colorCsp), calc(var(--l) - 10%), 1);
     --colorCspTheme-hsl-none: hsla(var(--colorCsp), calc(var(--l) - 10%), 0);
-}
-
-[data-theme="kismi"] {
-    --colorCspTheme: #{$sy-pri};
-    --colorCspTheme-rgb: 56, 124, 189;
 }
 
 [data-theme="aws"] {
@@ -157,17 +95,5 @@ $toast-txt: $color-theme;
     --colorCspTheme-hsl-none: hsla(202, 100%, 42%, 0);
 }
 
-// canvas node start
-$color-canvas_bg: $sy-gray-03;
-$color-context_bg: $sy-gray-08;
-$color-context_txt: $sy-gray-03;
-// canvas node end
-
-// resourceSetting start
-$color-label_txt: $sy-gray-08;
-div[class^="optionType"].disabled {
-    --colorInputBg: #{$sy-gray-05};
-}
-// resourceSetting end
 
 $borderSize: 1.5px;
