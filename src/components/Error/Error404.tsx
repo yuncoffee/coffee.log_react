@@ -1,7 +1,7 @@
 import exp from "constants"
 import React from "react"
 import { Link } from "react-router-dom"
-import Button from "../Button"
+import Button from "../Element/Button"
 
 function Error404() {
 	return (

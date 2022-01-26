@@ -12,6 +12,8 @@
         width: 100%;
         height: 100%;
         border-bottom: $borderSize solid rgba($sy-gray-03, 1);
+        // 요소보다 밑에 
+        z-index: -1;
         
     }
 

@@ -1,0 +1,204 @@
+@charset 'utf-8';
+
+@import "../global";
+
+$borderColor: $sy-gray-04;
+$backColor: $sy-gray-02;
+$textColor: $sy-gray-07;
+$placeholderColor: $sy-gray-05;
+$borderRadius: 4px;
+
+input,
+textarea {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: $borderSize solid;
+    min-width: 80px;
+    height: max-content;
+    transition: 0.4s;
+    gap: 4px;
+    @include h5;
+    font-weight: 500;
+
+    &[ly-size="xl"] {
+        padding: 0.85715em 1em;
+    }
+
+    &[ly-size="lg"] {
+        padding: 0.57143em 1em;
+    }
+
+    &[ly-size="mid"] {
+        padding: 0.28572em 1em;
+    }
+
+    &[ly-size="sm"] {
+        @include h6;
+        font-weight: 500;
+        padding: 0.29167em 1em;
+    }
+
+    &[ly-type="box"] {
+        border-radius: 0;
+        background: linear-gradient(
+                180deg,
+                rgba($backColor, 0.6) 0%,
+                rgba($borderColor, 0.6) 100%
+            ),
+            rgba($borderColor, 0.6);
+        color: rgba($textColor, 1);
+        border-color: rgba($borderColor, 1);
+    }
+
+    &[ly-type="box-line"] {
+        border-radius: 0;
+        background: linear-gradient(
+                180deg,
+                rgba($backColor, 0) 0%,
+                rgba($borderColor, 0) 100%
+            ),
+            rgba($borderColor, 0);
+        color: rgba($textColor, 1);
+        border-color: rgba($borderColor, 1);
+    }
+
+    &[ly-type="block"] {
+        border-radius: $borderRadius;
+        background: linear-gradient(
+                180deg,
+                rgba($backColor, 0.6) 0%,
+                rgba($borderColor, 0.6) 100%
+            ),
+            rgba($borderColor, 0.6);
+        color: rgba($textColor, 1);
+        border-color: rgba($borderColor, 1);
+    }
+
+    &[ly-type="block-line"] {
+        border-radius: $borderRadius;
+        background: linear-gradient(
+                180deg,
+                rgba($backColor, 0) 0%,
+                rgba($borderColor, 0) 100%
+            ),
+            rgba($borderColor, 0);
+        color: rgba($textColor, 1);
+        border-color: rgba($borderColor, 1);
+    }
+
+    &[ly-type="round"]:not(textarea) {
+        border-radius: 50px;
+        background: linear-gradient(
+                180deg,
+                rgba($backColor, 0.6) 0%,
+                rgba($borderColor, 0.6) 100%
+            ),
+            rgba($borderColor, 0.6);
+        color: rgba($textColor, 1);
+        border-color: rgba($borderColor, 1);
+    }
+
+    &[ly-type="round-line"]:not(textarea) {
+        border-radius: 50px;
+        background: linear-gradient(
+                180deg,
+                rgba($backColor, 0) 0%,
+                rgba($borderColor, 0) 100%
+            ),
+            rgba($borderColor, 0);
+        color: rgba($textColor, 1);
+        border-color: rgba($borderColor, 1);
+    }
+
+    &[ly-type="text"] {
+        border-radius: 0;
+        background: linear-gradient(
+                180deg,
+                rgba($backColor, 0) 0%,
+                rgba($borderColor, 0) 100%
+            ),
+            rgba($borderColor, 0);
+        color: rgba($textColor, 1);
+        border-color: rgba($borderColor, 0);
+    }
+
+    &[ly-type="underline"] {
+        border-radius: 0;
+        background: linear-gradient(
+                180deg,
+                rgba($backColor, 0) 0%,
+                rgba($borderColor, 0) 100%
+            ),
+            rgba($borderColor, 0);
+        color: rgba($textColor, 1);
+        border-top-color: rgba($borderColor, 0);
+        border-left-color: rgba($borderColor, 0);
+        border-right-color: rgba($borderColor, 0);
+        border-bottom-color: rgba($borderColor, 1);
+    }
+
+    &:disabled {
+        color: rgba($backColor, 1);
+        border-color: rgba($borderColor, 1);
+        background: rgba($borderColor, 1);
+
+        &::placeholder {
+            color: rgba($placeholderColor, 1);
+        }
+    }
+
+    &:focus:not([ly-focus="false"]) {
+        border-color: rgba($sy-pri, 1);
+        box-shadow: 0px 0px 6px -1px rgba(32, 111, 214, 0.5);
+
+        &[ly-type="text"] {
+            border-top-color: rgba($borderColor, 0);
+            border-left-color: rgba($borderColor, 0);
+            border-right-color: rgba($borderColor, 0);
+            border-bottom-color: rgba($sy-pri, 1);
+            box-shadow: 0px 0px 6px -1px rgba(32, 111, 214, 0);
+        }
+
+        &[ly-type="underline"] {
+            border-top-color: rgba($borderColor, 0);
+            border-left-color: rgba($borderColor, 0);
+            border-right-color: rgba($borderColor, 0);
+            border-bottom-color: rgba($sy-pri, 1);
+            box-shadow: 0px 0px 6px -1px rgba(32, 111, 214, 0);
+        }
+    }
+
+    &[ly-invalid="invalid"] {
+        border-color: rgba($sy-red, 1);
+        box-shadow: 0px 0px 6px -1px rgba(255, 91, 91, 0.5);
+    }
+}
+
+textarea {
+    resize: none;
+
+    &[ly-type="round"] {
+        border-radius: 16px;
+        background: linear-gradient(
+                180deg,
+                rgba($backColor, 0.6) 0%,
+                rgba($borderColor, 0.6) 100%
+            ),
+            rgba($borderColor, 0.6);
+        color: rgba($textColor, 1);
+        border-color: rgba($borderColor, 1);
+    }
+
+    &[ly-type="round-line"] {
+        border-radius: 16px;
+        background: linear-gradient(
+                180deg,
+                rgba($backColor, 0) 0%,
+                rgba($borderColor, 0) 100%
+            ),
+            rgba($borderColor, 0);
+        color: rgba($textColor, 1);
+        border-color: rgba($borderColor, 1);
+    }
+}

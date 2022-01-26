@@ -1,45 +1,37 @@
-import React from "react"
-import "./styles/main.css"
-import "./App.css"
-import "./styles/scss/_global.scss"
-import { Link, Route, Switch } from "react-router-dom"
-import Button from "./components/Button"
-import Main from "./components/Main"
-import Error404 from "./components/Error/Error404"
-import PageHeader from "./components/PageHeader"
+import React, { useEffect } from "react"
+import { Route, Routes } from "react-router-dom"
+import PageHeader from "./components/Layout/PageHeader"
+import Main from "./components/Layout/Main"
+import ErrorPage from "./components/ErrorPage/ErrorPage"
+import AssetsPage from "./components/AssetsPage/AssetsPage"
+import AssetsItem from "./components/AssetsPage/AssetsItem"
+import { useRecoilState } from "recoil"
+
+import { coreThemeAtom } from "./recoils/CommonAtoms"
 
 function App() {
+	// eslint-disable-next-line
+	const [coreTheme, setCoreTheme] = useRecoilState(coreThemeAtom)
+
+	useEffect(() => {
+		const body = document.querySelector("body")
+		if (coreTheme && typeof coreTheme.theme === "string") {
+			body?.setAttribute("data-theme", coreTheme.theme)
+		}
+	})
+
 	return (
 		<div className="App">
 			<PageHeader />
-
-			<Switch>
-				<Route exact path={"/"}>
-					<Main></Main>
+			<Routes>
+				<Route path="/" element={<Main />} />
+				<Route path="/" element={<Main />}>
+					<Route path="assets/*" element={<AssetsPage />}>
+						<Route path=":id" element={<AssetsItem />} />
+					</Route>
 				</Route>
-				<Route path={"/detail"}>
-					<div className="container">
-						<div className="row">
-							<div className="col-md-6">
-								<img
-									src="https://codingapple1.github.io/shop/shoes1.jpg"
-									width="100%"
-									alt="됐냐"
-								/>
-							</div>
-							<div className="col-md-6 mt-4">
-								<h4 className="pt-5">상품명</h4>
-								<p>상품설명</p>
-								<p>120000원</p>
-								<button className="btn btn-danger">
-									주문하기
-								</button>
-							</div>
-						</div>
-					</div>
-				</Route>
-				<Route path="*" component={Error404}></Route>
-			</Switch>
+				<Route path="/*" element={<ErrorPage />} />
+			</Routes>
 		</div>
 	)
 }

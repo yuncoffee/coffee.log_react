@@ -1,0 +1,34 @@
+@charset "utf-8";
+@import "../global";
+
+.page-header {
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    background: rgba($sy-white, 1);
+    // 최 상위
+    z-index: 999;
+
+    @include beforeLine($btm: $sy-gray-04);
+
+    &__img {
+        height: 36px;
+
+        img {
+            width: auto;
+            height: 100%;
+        }
+
+        $csps: "azure", "aws", "ncloud";
+        @each $csp in $csps {
+            .csp-logo.#{$csp} {
+                width: 100px;
+                height: 32px;
+                background: url("../../assets/csp/csp_logo_#{$csp}.png")
+                    no-repeat
+                    center /
+                    contain;
+            }
+        }
+    }
+}

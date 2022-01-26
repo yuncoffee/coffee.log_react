@@ -23,7 +23,7 @@ function PageHeader() {
 						</figure>
 					</Link>
 				</div>
-				<ul>
+				<ul s-display="flex" s-gap="16px">
 					<li>ㅎㅇ</li>
 					<li>ㅎㅇ2</li>
 					<li>ㅎㅇ3</li>
