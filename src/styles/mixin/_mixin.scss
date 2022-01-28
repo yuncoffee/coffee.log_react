@@ -87,3 +87,28 @@
         z-index: -1;
     }
 }
+
+@mixin scrollbar(
+    $bg-c: $sy-gray-03,
+    $bg-a: 1,
+    $track-c: $sy-gray-03,
+    $track-a: 0,
+    $thumb-c: $sy-gray-05,
+    $thumb-a: 0.4
+) {
+    &::-webkit-scrollbar {
+        background: rgba($bg-c, $bg-a);
+        width: 10px;
+        height: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba($track-c, $track-a);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba($thumb-c, $thumb-a);
+        border: 1.5px solid rgba($bg-c, $bg-a);
+        border-radius: 8px;
+    }
+}

@@ -64,7 +64,7 @@ function PageHeader() {
 						s-before-line="left"
 						s-before-left="-4px"
 					>
-						<a s-display="flex" href="#">
+						<a s-display="flex" href="/">
 							<Icon
 								type="text"
 								size="mid"
