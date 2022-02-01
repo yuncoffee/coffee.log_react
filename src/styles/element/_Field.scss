@@ -1,6 +1,7 @@
 @charset 'utf-8';
 
-@import "../global";
+@import "../variables";
+@import "../mixin/mixin";
 
 $borderColor: $sy-gray-04;
 $backColor: $sy-gray-02;
@@ -8,9 +9,10 @@ $textColor: $sy-gray-07;
 $placeholderColor: $sy-gray-05;
 $borderRadius: 4px;
 
-input,
+input:not([type="radio"]):not([type="checkbox"]),
 textarea {
     display: inline-flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     border: $borderSize solid;
@@ -20,6 +22,10 @@ textarea {
     gap: 4px;
     @include h5;
     font-weight: 500;
+
+    &::placeholder {
+        color: rgba($placeholderColor, 1);
+    }
 
     &[ly-size="xl"] {
         padding: 0.85715em 1em;
@@ -139,16 +145,12 @@ textarea {
     }
 
     &:disabled {
-        color: rgba($backColor, 1);
+        color: rgba($placeholderColor, 1);
         border-color: rgba($borderColor, 1);
         background: rgba($borderColor, 1);
-
-        &::placeholder {
-            color: rgba($placeholderColor, 1);
-        }
     }
 
-    &:focus:not([ly-focus="false"]) {
+    &:focus:not([ly-focus="false"]):not([ly-invalid="invalid"]):not([ly-invalid="valid"]) {
         border-color: rgba($sy-pri, 1);
         box-shadow: 0px 0px 6px -1px rgba(32, 111, 214, 0.5);
 
@@ -171,12 +173,90 @@ textarea {
 
     &[ly-invalid="invalid"] {
         border-color: rgba($sy-red, 1);
-        box-shadow: 0px 0px 6px -1px rgba(255, 91, 91, 0.5);
+        box-shadow: 0px 0px 6px -1px rgba(255, 91, 91, 0);
+
+        &:focus {
+            box-shadow: 0px 0px 6px -1px rgba(255, 91, 91, 0.5);
+        }
+
+        &[ly-type="text"] {
+            border-top-color: rgba($borderColor, 0);
+            border-left-color: rgba($borderColor, 0);
+            border-right-color: rgba($borderColor, 0);
+            border-bottom-color: rgba($sy-red, 1);
+            box-shadow: 0px 0px 6px -1px rgba(255, 91, 91, 0);
+            box-shadow: inset 0px -5px 6px -6px rgba(255, 91, 91, 0);
+
+            &:focus {
+                box-shadow: inset 0px -5px 6px -6px rgba(255, 91, 91, 0.5);
+            }
+        }
+
+        &[ly-type="underline"] {
+            border-top-color: rgba($borderColor, 0);
+            border-left-color: rgba($borderColor, 0);
+            border-right-color: rgba($borderColor, 0);
+            border-bottom-color: rgba($sy-red, 1);
+            box-shadow: 0px 0px 6px -1px rgba(255, 91, 91, 0);
+            box-shadow: inset 0px -5px 6px -6px rgba(255, 91, 91, 0);
+
+            &:focus {
+                box-shadow: inset 0px -5px 6px -6px rgba(255, 91, 91, 0.5);
+            }
+        }
+    }
+
+    &[ly-invalid="valid"] {
+        border-color: rgba($sy-green, 1);
+        box-shadow: 0px 0px 6px -1px rgba(31, 217, 166, 0);
+
+        &:focus {
+            box-shadow: 0px 0px 6px -1px rgba(31, 217, 166, 0.5);
+        }
+
+        &[ly-type="text"] {
+            border-top-color: rgba($borderColor, 0);
+            border-left-color: rgba($borderColor, 0);
+            border-right-color: rgba($borderColor, 0);
+            border-bottom-color: rgba($sy-green, 1);
+            box-shadow: 0px 0px 6px -1px rgba(31, 217, 166, 0);
+            box-shadow: inset 0px -4px 6px -4px rgba(31, 217, 166, 0);
+
+            &:focus {
+                box-shadow: inset 0px -5px 6px -6px rgba(31, 217, 166, 0.5);
+            }
+        }
+
+        &[ly-type="underline"] {
+            border-top-color: rgba($borderColor, 0);
+            border-left-color: rgba($borderColor, 0);
+            border-right-color: rgba($borderColor, 0);
+            border-bottom-color: rgba($sy-green, 1);
+            box-shadow: 0px 0px 6px -1px rgba(31, 217, 166, 0);
+            box-shadow: inset 0px -4px 6px -4px rgba(31, 217, 166, 0);
+
+            &:focus {
+                box-shadow: inset 0px -5px 6px -6px rgba(31, 217, 166, 0.5);
+            }
+        }
     }
 }
 
 textarea {
     resize: none;
+    @include scrollbar($bg-a: 0);
+
+    &[ly-size="xl"] {
+        min-height: 111px;
+    }
+
+    &[ly-size="lg"] {
+        min-height: 82px;
+    }
+
+    &[ly-size="mid"] {
+        min-height: 53px;
+    }
 
     &[ly-type="round"] {
         border-radius: 16px;
@@ -188,6 +268,10 @@ textarea {
             rgba($borderColor, 0.6);
         color: rgba($textColor, 1);
         border-color: rgba($borderColor, 1);
+
+        &::-webkit-scrollbar {
+            border-radius: 16px;
+        }
     }
 
     &[ly-type="round-line"] {
@@ -200,5 +284,9 @@ textarea {
             rgba($borderColor, 0);
         color: rgba($textColor, 1);
         border-color: rgba($borderColor, 1);
+
+        &::-webkit-scrollbar {
+            border-radius: 16px;
+        }
     }
 }

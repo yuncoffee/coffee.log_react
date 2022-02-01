@@ -29,6 +29,7 @@ function AssetsInput() {
 						s_type="box-line"
 						height="50%"
 						ly_ref={textareaRef}
+						invalid="invalid"
 					/>
 
 					<TextArea

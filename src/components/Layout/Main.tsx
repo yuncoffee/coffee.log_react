@@ -28,7 +28,7 @@ function Main() {
 					{id === undefined ? (
 						<>
 							<h1 s-text-align="center">
-								환영! CloudStuido Compoenents Design Guide
+								coffee의 포트폴리오 사이트 입니다
 							</h1>
 							<h5 s-text-align="center">
 								클라우드 스튜디오에 적용할 컴포넌트 디자인

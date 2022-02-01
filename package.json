@@ -23,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
@@ -33,7 +35,17 @@
     "rules": {
       "no-unused-vars": 0,
       "@typescript-eslint/no-unused-vars": 0
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
@@ -50,6 +62,14 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "devDependencies": {
+    "@storybook/addon-actions": "^6.4.17",
+    "@storybook/addon-essentials": "^6.4.17",
+    "@storybook/addon-links": "^6.4.17",
+    "@storybook/builder-webpack5": "^6.4.17",
+    "@storybook/manager-webpack5": "^6.4.17",
+    "@storybook/node-logger": "^6.4.17",
+    "@storybook/preset-create-react-app": "^4.0.0",
+    "@storybook/react": "^6.4.17",
     "@types/react-router-dom": "^5.3.3",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.5",
@@ -58,7 +78,8 @@
     "postcss-hexrgba": "^2.0.1",
     "postcss-import": "^14.0.2",
     "postcss-loader": "^6.2.1",
-    "postcss-nested": "^5.0.6"
+    "postcss-nested": "^5.0.6",
+    "webpack": "^5.68.0"
   },
   "author": "",
   "license": "ISC",
