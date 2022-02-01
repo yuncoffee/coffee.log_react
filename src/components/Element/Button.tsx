@@ -1,52 +1,49 @@
 import React from "react"
 import "../../styles/element/_Button.scss"
+import styled from "styled-components"
 
 interface BtnType {
-	/** 버튼에 이름에 대한 설정 */
+	/** 버튼이름 옵션 */
 	name: string
-	type?:
-		| "block"
-		| "box"
-		| "round"
-		| "box-line"
-		| "block-line"
-		| "round-line"
-		| "box-ghost"
-		| "block-ghost"
-		| "round-ghost"
-		| "text"
-		| undefined
-		| string
-	/** 클래스 명에 대한 속성 */
-	className?: string | undefined
-	/** 버튼 사이즈(높이)에 대한 속성 | "xl" | "lg" | "mid" | "sm"  */
+	/** 버튼형태 옵션 */
+	type?: string | undefined
+	/** 버튼크기 옵션 */
 	size?: string
+	/** 클래스명 옵션 */
+	className?: string | undefined
+	/** 버튼 사용처 */
 	use?: string
+	/** disabled 유무 */
 	disabled?: boolean | undefined
+	/** 버튼길이 옵션 */
 	length?: string | undefined
+	/** 아이콘사용 유무 */
 	icon?: boolean
+	non_remix?: undefined | HTMLElement
+	/** 아이콘사용 시 이름 옵션 */
 	iconName?: string
 	ly_ref?: React.RefObject<HTMLButtonElement> | undefined
 	onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 }
 
 /**
- * 안녕하세요 라고 보여주고 싶을 땐 `Hello` 컴포넌트를 사용하세요.
+ * 버튼 기본옵션 타입을 설정합니다.
  *
- * - `big` 값을 `true`로 설정하면 **크게** 나타납니다.
- * - `onHello` 와 `onBye` props로 설정하여 버튼이 클릭했을 때 호출 할 함수를 지정 할 수 있습니다.
+ * - 테스트중입니다.
+ * - 테스트중입니다.
  */
 
 function Button({
-	className = "",
+	name = "버튼",
 	type = "block",
 	size = "sm",
-	name = "버튼",
+	className = "",
 	use = "default",
 	length = undefined,
 	disabled = false,
 	icon = false,
 	iconName = "",
+	non_remix = undefined,
 	ly_ref = undefined,
 	onClick = () => {
 		console.log("default : 전달받은 이벤트가 없어요")
@@ -55,27 +52,39 @@ function Button({
 	const childRef = ly_ref
 
 	return (
-		<button
-			className={"button " + className}
-			ly-size={size}
-			ly-type={type}
-			ly-use={use}
-			disabled={disabled}
-			onClick={onClick}
-			style={{ width: `${length}` }}
-			type="button"
-			ref={childRef}
-		>
-			{/* 아이콘이 있을 경우만 생성 */}
-			{icon ? (
-				<div className="icon">
-					<i className={iconName + " ri-1x"}></i>
-				</div>
-			) : (
-				""
-			)}
-			{name}
-		</button>
+		<>
+			<style>
+				{`
+					background: #424242;
+				`}
+			</style>
+			<button
+				className={"button " + className}
+				ly-size={size}
+				ly-type={type}
+				ly-use={use}
+				disabled={disabled}
+				onClick={onClick}
+				style={{ width: `${length}` }}
+				type="button"
+				ref={childRef}
+			>
+				{/* 아이콘이 있을 경우만 생성 */}
+				{icon ? (
+					<div className="icon">
+						{/* remix가 undefined가 아닐 경우 */}
+						{non_remix ? (
+							{ non_remix }
+						) : (
+							<i className={iconName + " ri-1x"}></i>
+						)}
+					</div>
+				) : (
+					""
+				)}
+				{name}
+			</button>
+		</>
 	)
 }
 
