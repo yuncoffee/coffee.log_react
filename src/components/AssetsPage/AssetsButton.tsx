@@ -176,6 +176,16 @@ function AsstesButton({ lyTypes, lyUses }: ButtonProps) {
 						/>
 					</div>
 				</div>
+
+				<Button
+					name="myHello"
+					// customColor={{ hue: 25, saturation: 30, lightness: 52 }}
+				/>
+
+				<Button
+					name="test 버튼"
+					customColor={{ hue: 215, saturation: 100, lightness: 36 }}
+				/>
 			</section>
 		</>
 	)

@@ -394,6 +394,53 @@ $useCases: "default", "cancel", "csp", "warning";
                     }
                 }
 
+                &[ly-type="round"] {
+                    border-radius: 50px;
+                    border: $borderSize solid rgba($color, 1);
+
+                    &:hover {
+                        border: $borderSize solid darken(rgba($color, 1), 10%);
+                    }
+
+                    &:disabled {
+                        color: rgba($sy-gray-05, 1);
+                        background: rgba($sy-gray-03, 1);
+                        border: 1.5px solid rgba($sy-gray-03, 1);
+                        cursor: auto;
+
+                        &:hover {
+                            color: rgba($sy-gray-05, 1);
+                            background: rgba($sy-gray-03, 1);
+                            border: 1.5px solid rgba($sy-gray-03, 1);
+                        }
+                    }
+                }
+
+                &[ly-type="round-line"] {
+                    border-radius: 50px;
+                    background: rgba($color, 0);
+                    color: rgba($color, 1);
+
+                    &:hover {
+                        color: rgba($sy-white, 1);
+                        background: darken(rgba($color, 1), 10%);
+                        border: $borderSize solid darken(rgba($color, 1), 10%);
+                    }
+
+                    &:disabled {
+                        color: rgba($sy-gray-05, 1);
+                        background: rgba($sy-gray-03, 0);
+                        border: 1.5px solid rgba($sy-gray-03, 1);
+                        cursor: auto;
+
+                        &:hover {
+                            color: rgba($sy-gray-05, 1);
+                            background: rgba($sy-gray-03, 0);
+                            border: 1.5px solid rgba($sy-gray-03, 1);
+                        }
+                    }
+                }
+
                 &[ly-type="text"] {
                     background: rgba($color, 0);
                     color: rgba($sy-gray-07, 1);
@@ -573,6 +620,53 @@ $useCases: "default", "cancel", "csp", "warning";
 
                 &[ly-type="block-line"] {
                     border-radius: 4px;
+                    background: rgba($color, 0);
+                    color: rgba($color, 1);
+
+                    &:hover {
+                        color: rgba($sy-white, 1);
+                        background: darken(rgba($color, 1), 10%);
+                        border: $borderSize solid darken(rgba($color, 1), 10%);
+                    }
+
+                    &:disabled {
+                        color: rgba($sy-gray-05, 1);
+                        background: rgba($sy-gray-03, 0);
+                        border: 1.5px solid rgba($sy-gray-03, 1);
+                        cursor: auto;
+
+                        &:hover {
+                            color: rgba($sy-gray-05, 1);
+                            background: rgba($sy-gray-03, 0);
+                            border: 1.5px solid rgba($sy-gray-03, 1);
+                        }
+                    }
+                }
+
+                &[ly-type="round"] {
+                    border-radius: 50px;
+                    border: $borderSize solid rgba($color, 1);
+
+                    &:hover {
+                        border: $borderSize solid darken(rgba($color, 1), 10%);
+                    }
+
+                    &:disabled {
+                        color: rgba($sy-gray-05, 1);
+                        background: rgba($sy-gray-03, 1);
+                        border: 1.5px solid rgba($sy-gray-03, 1);
+                        cursor: auto;
+
+                        &:hover {
+                            color: rgba($sy-gray-05, 1);
+                            background: rgba($sy-gray-03, 1);
+                            border: 1.5px solid rgba($sy-gray-03, 1);
+                        }
+                    }
+                }
+
+                &[ly-type="round-line"] {
+                    border-radius: 50px;
                     background: rgba($color, 0);
                     color: rgba($color, 1);
 
