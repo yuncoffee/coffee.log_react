@@ -10,7 +10,7 @@
     // 최 상위
     z-index: 999;
 
-    @include beforeLine($btm: $sy-gray-04);
+    @include beforeLine($h: calc(100% - 1.5px) , $btm: $sy-gray-04);
 
     &__img {
         height: 36px;

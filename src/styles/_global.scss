@@ -64,13 +64,6 @@ $displays: "flex", "block", "inline", "inline-block", "none";
     }
 }
 
-$displays: "flex", "block", "inline", "inline-block", "none";
-@each $display in $displays {
-    [s-display="#{$display}"] {
-        display: #{$display};
-    }
-}
-
 $flexWraps: "no-wrap", "wrap", "wrap-reverse", "unset";
 @each $flexWrap in $flexWraps {
     [s-flex-wrap="#{$flexWrap}"] {
@@ -120,7 +113,6 @@ $spaces: 0, 2, 4, 6, 8, 12, 14, 16, 20, 24, 28, 30, 32, 36, 40, 48, 56, 64, 72,
     80, ;
 @each $space in $spaces {
     //  margin
-
     [s-margin="#{$space}px"] {
         margin: #{$space}px;
     }
@@ -178,6 +170,10 @@ $spaces: 0, 2, 4, 6, 8, 12, 14, 16, 20, 24, 28, 30, 32, 36, 40, 48, 56, 64, 72,
     }
     [s-right="#{$space}px"] {
         right: #{$space}px;
+    }
+
+    [s-radius="#{$space}px"]{
+        border-radius: #{$space}px;
     }
 }
 

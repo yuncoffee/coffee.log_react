@@ -95,5 +95,7 @@ $toast-txt: $color-theme;
     --colorCspTheme-hsl-none: hsla(202, 100%, 42%, 0);
 }
 
-
+$breakpoint-mobile: 335px;
+$breakpoint-tablet: 758px;
+$breakpoint-desktop: 1024px;
 $borderSize: 1.5px;

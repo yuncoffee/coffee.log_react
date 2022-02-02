@@ -16,7 +16,7 @@ interface BtnType {
 	disabled?: boolean | undefined
 	/** [optional] 아이콘사용 유무 */
 	icon?: boolean
-	/** [optional] 아이콘사용 시 remixicon 옵션 */
+	/** [optional] 아이콘사용 시 remixicon 미사용 시 대체 */
 	non_remix?: undefined | HTMLElement
 	/** [optional] 아이콘사용 시 이름 옵션 */
 	iconName?: string
@@ -66,10 +66,10 @@ function Button({
 		console.log("default : 전달받은 이벤트가 없어요")
 	},
 }: BtnType) {
-	let defaultColor
-	let darkenColor
-	let transColor
-	let colorClassName
+	let defaultColor // 커스텀 기본 색상
+	let darkenColor // 커스텀 호버 색상
+	let transColor // 커스텀 투명 색상
+	let colorClassName // 커스텀 컬러 className
 
 	if (customColor !== undefined) {
 		colorClassName = customColor.className
@@ -115,7 +115,8 @@ function Button({
 						.${colorClassName}[ly-use="default"][ly-type="block-line"]:hover,
 						.${colorClassName}[ly-use="default"][ly-type="round-line"]:hover {
 							background: ${darkenColor};
-							border: 1.5px solid ${darkenColor};
+							border: 1.5px sol<h1>Page Profile</h1>id
+								${darkenColor};
 						}
 						.${colorClassName}[ly-use="default"][ly-type="box-ghost"]:hover,
 						.${colorClassName}[ly-use="default"][ly-type="block-ghost"]:hover,

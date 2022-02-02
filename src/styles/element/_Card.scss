@@ -1,0 +1,42 @@
+@charset 'utf-8';
+
+@import "../variables";
+@import "../mixin/mixin";
+
+.card {
+    background: rgba($sy-white, 1);
+    backdrop-filter: blur(30px);
+    transition: 0.3s;
+    border: 1px solid rgba($sy-white, 0.3);
+    overflow: hidden;
+    width: 100%;
+
+    &:hover{
+        box-shadow: 0px 0px 6px -1px rgba($sy-pri, 0.5);
+    }
+}	
+
+h3 {
+    font-weight: 600;
+}
+
+.top{
+    position: relative;
+    min-height: 200px;
+    
+
+    .thumbnail{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        // background: olive;
+        // background: url(../../assets/csp/csp_logo_aws.png) no-repeat center / cover;
+    }
+}
+
+
+@include desktop {
+    .card{
+        width: calc(50% - 8px);
+    }
+  }
