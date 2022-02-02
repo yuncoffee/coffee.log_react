@@ -117,7 +117,7 @@ $positions: "static", "relative", "absolute", "fixed", "sticky";
 }
 
 $spaces: 0, 2, 4, 6, 8, 12, 14, 16, 20, 24, 28, 30, 32, 36, 40, 48, 56, 64, 72,
-    80;
+    80, ;
 @each $space in $spaces {
     //  margin
 

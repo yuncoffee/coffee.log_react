@@ -1,10 +1,9 @@
 import React from "react"
 import { useParams } from "react-router"
-import AsstesButton from "./AssetsButton"
-import AssetsIcon from "./AssetsIcon"
-import AssetsInput from "./AssetsInput"
+import PageProfile from "./PageProfile"
+import PageContents from "./PageContents"
 
-function AssetsItem() {
+function MyItem() {
 	const { id } = useParams()
 
 	const lyTypes: string[] = [
@@ -23,12 +22,10 @@ function AssetsItem() {
 
 	return (
 		<>
-			{id === "button" ? (
-				<AsstesButton lyTypes={lyTypes} lyUses={lyUses} />
-			) : id === "icon" ? (
-				<AssetsIcon lyTypes={lyTypes} lyUses={lyUses} />
-			) : id === "input" ? (
-				<AssetsInput />
+			{id === "PageProfile" ? (
+				<PageProfile />
+			) : id === "PageContents" ? (
+				<PageContents />
 			) : (
 				<section className="main-contents">아무것도 아님</section>
 			)}
@@ -36,4 +33,4 @@ function AssetsItem() {
 	)
 }
 
-export default AssetsItem
+export default MyItem

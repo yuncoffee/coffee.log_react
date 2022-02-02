@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom"
 import PageHeader from "./components/Layout/PageHeader"
 import Main from "./components/Layout/Main"
 import ErrorPage from "./components/ErrorPage/ErrorPage"
-import AssetsPage from "./components/AssetsPage/AssetsPage"
-import AssetsItem from "./components/AssetsPage/AssetsItem"
+import MyPage from "./components/MyPage/MyPage"
+import MyItem from "./components/MyPage/MyItem"
 import { useRecoilState } from "recoil"
 
 import { coreThemeAtom } from "./recoils/CommonAtoms"
@@ -24,10 +24,9 @@ function App() {
 		<div className="App">
 			<PageHeader />
 			<Routes>
-				<Route path="/" element={<Main />} />
 				<Route path="/" element={<Main />}>
-					<Route path="assets/*" element={<AssetsPage />}>
-						<Route path=":id" element={<AssetsItem />} />
+					<Route path="myPage/*" element={<MyPage />}>
+						<Route path=":id" element={<MyItem />} />
 					</Route>
 				</Route>
 				<Route path="/*" element={<ErrorPage />} />

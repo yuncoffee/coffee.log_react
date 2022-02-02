@@ -3,7 +3,7 @@ import { useParams } from "react-router"
 import "../../styles/layout/_Main.scss"
 import PageNav from "./PageNav"
 
-import AssetsPage from "../AssetsPage/AssetsPage"
+import MyPage from "../MyPage/MyPage"
 
 function Main() {
 	const { id } = useParams()
@@ -38,7 +38,7 @@ function Main() {
 					) : (
 						""
 					)}
-					<AssetsPage />
+					<MyPage />
 				</main>
 			</div>
 		</>

@@ -2,29 +2,38 @@ import React, { useEffect } from "react"
 import "../../styles/element/_Button.scss"
 
 interface BtnType {
-	/** 버튼이름 옵션 */
+	/** [essential] 버튼이름 옵션 */
 	name: string
-	/** 버튼형태 옵션 */
+	/** [optional] 버튼형태 옵션 */
 	type?: string | undefined
-	/** 버튼크기 옵션 */
+	/** [optional] 버튼크기 옵션 */
 	size?: string
-	/** 클래스명 옵션 */
+	/** [optional] 클래스명 옵션 */
 	className?: string | undefined
-	/** 버튼 사용처 */
+	/** [optional] 버튼 사용처 */
 	use?: string
-	/** disabled 유무 */
+	/** [optional] disabled 유무 */
 	disabled?: boolean | undefined
-	/** 버튼길이 옵션 */
-	length?: string | undefined
-	/** 아이콘사용 유무 */
+	/** [optional] 아이콘사용 유무 */
 	icon?: boolean
+	/** [optional] 아이콘사용 시 remixicon 옵션 */
 	non_remix?: undefined | HTMLElement
-	/** 아이콘사용 시 이름 옵션 */
+	/** [optional] 아이콘사용 시 이름 옵션 */
 	iconName?: string
+	/** [optional] 커스텀 컬러 사용 시 옵션_HSL */
 	customColor?:
-		| { hue: number; saturation: number; lightness: number }
+		| {
+				className: string
+				hue: number
+				saturation: number
+				lightness: number
+		  }
 		| undefined
+	/** [optional] 버튼길이 옵션 */
+	length?: string | undefined
+	/** [optional] ref 옵션 */
 	ly_ref?: React.RefObject<HTMLButtonElement> | undefined
+	/** [optional] onClick 이벤트 핸들러 */
 	onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 }
 
@@ -41,30 +50,29 @@ function Button({
 	size = "sm",
 	className = "",
 	use = "default",
-	length = undefined,
 	disabled = false,
 	icon = false,
 	iconName = "",
 	non_remix = undefined,
 	ly_ref = undefined,
-	customColor = undefined,
+	customColor = {
+		className: "default",
+		hue: 33,
+		saturation: 40,
+		lightness: 10,
+	},
+	length = undefined,
 	onClick = () => {
 		console.log("default : 전달받은 이벤트가 없어요")
 	},
 }: BtnType) {
-	const childRef = ly_ref
-
-	// let customColor = {
-	// 	hue: 215,
-	// 	saturation: 100,
-	// 	lightness: 36,
-	// }
-
 	let defaultColor
 	let darkenColor
 	let transColor
+	let colorClassName
 
 	if (customColor !== undefined) {
+		colorClassName = customColor.className
 		defaultColor = `hsla(${customColor.hue}, ${customColor.saturation}%, ${customColor.lightness}% , 1)`
 		darkenColor = `hsla(${customColor.hue}, ${customColor.saturation}%, ${
 			customColor.lightness - 10
@@ -75,45 +83,46 @@ function Button({
 	return (
 		<>
 			{customColor ? (
-				<style jsx>
+				// eslint-disable-next-line max-len
+				<style jsx="true">
 					{`
-						.customColor[ly-use="default"] {
+						.${colorClassName}[ly-use="default"] {
 							background: ${defaultColor};
 						}
-						.customColor[ly-use="default"]:hover {
+						.${colorClassName}[ly-use="default"]:hover {
 							background: ${darkenColor};
 						}
-						.customColor[ly-use="default"][ly-type="box"],
-						.customColor[ly-use="default"][ly-type="block"],
-						.customColor[ly-use="default"][ly-type="round"] {
+						.${colorClassName}[ly-use="default"][ly-type="box"],
+						.${colorClassName}[ly-use="default"][ly-type="block"],
+						.${colorClassName}[ly-use="default"][ly-type="round"] {
 							background: ${defaultColor};
 							border-color: ${defaultColor};
 						}
-						.customColor[ly-use="default"][ly-type="box"]:hover,
-						.customColor[ly-use="default"][ly-type="block"]:hover,
-						.customColor[ly-use="default"][ly-type="round"]:hover {
+						.${colorClassName}[ly-use="default"][ly-type="box"]:hover,
+						.${colorClassName}[ly-use="default"][ly-type="block"]:hover,
+						.${colorClassName}[ly-use="default"][ly-type="round"]:hover {
 							background: ${darkenColor};
 							border-color: ${transColor};
 						}
-						.button[ly-use="default"][ly-type="box-line"],
-						.button[ly-use="default"][ly-type="block-line"],
-						.button[ly-use="default"][ly-type="round-line"] {
+						.${colorClassName}[ly-use="default"][ly-type="box-line"],
+						.${colorClassName}[ly-use="default"][ly-type="block-line"],
+						.${colorClassName}[ly-use="default"][ly-type="round-line"] {
 							background: ${transColor};
 							color: ${defaultColor};
 							border: 1.5px solid ${defaultColor};
 						}
-						.customColor[ly-use="default"][ly-type="box-line"]:hover,
-						.customColor[ly-use="default"][ly-type="block-line"]:hover,
-						.customColor[ly-use="default"][ly-type="round-line"]:hover {
+						.${colorClassName}[ly-use="default"][ly-type="box-line"]:hover,
+						.${colorClassName}[ly-use="default"][ly-type="block-line"]:hover,
+						.${colorClassName}[ly-use="default"][ly-type="round-line"]:hover {
 							background: ${darkenColor};
 							border: 1.5px solid ${darkenColor};
 						}
-						.customColor[ly-use="default"][ly-type="box-ghost"]:hover,
-						.customColor[ly-use="default"][ly-type="block-ghost"]:hover,
-						.customColor[ly-use="default"][ly-type="round-ghost"]:hover {
+						.${colorClassName}[ly-use="default"][ly-type="box-ghost"]:hover,
+						.${colorClassName}[ly-use="default"][ly-type="block-ghost"]:hover,
+						.${colorClassName}[ly-use="default"][ly-type="round-ghost"]:hover {
 							background: ${darkenColor};
 						}
-						.customColor[ly-use="default"][ly-type="text"]:hover {
+						.${colorClassName}[ly-use="default"][ly-type="text"]:hover {
 							background: ${transColor};
 							color: ${defaultColor};
 						}
@@ -125,7 +134,7 @@ function Button({
 			<button
 				className={
 					customColor
-						? "button customColor" + className
+						? "button " + customColor.className + className
 						: "button " + className
 				}
 				ly-size={size}
@@ -135,7 +144,7 @@ function Button({
 				onClick={onClick}
 				style={{ width: `${length}` }}
 				type="button"
-				ref={childRef}
+				ref={ly_ref}
 			>
 				{/* 아이콘이 있을 경우만 생성 */}
 				{icon ? (

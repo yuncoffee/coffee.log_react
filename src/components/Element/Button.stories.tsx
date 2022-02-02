@@ -1,7 +1,7 @@
 import React from "react"
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 import Button from "./Button"
-
+import { action, actions } from "@storybook/addon-actions"
 import { withKnobs, text, boolean, number } from "@storybook/addon-knobs"
 
 export default {
@@ -32,6 +32,7 @@ export default {
 			options: {
 				default: "default",
 				warning: "warning",
+				cancel: "cancel",
 				csp: "csp",
 			},
 		},
@@ -40,6 +41,11 @@ export default {
 		},
 		icon: {
 			control: "boolean",
+		},
+		customColor: {
+			hue: { type: "range", min: 0, max: 255, step: 1 },
+			saturation: { type: "range", min: 0, max: 100, step: 1 },
+			lightness: { type: "range", min: 0, max: 100, step: 1 },
 		},
 	},
 	decorators: [withKnobs],
@@ -63,9 +69,13 @@ Default.args = {
 	iconName: "",
 	non_remix: undefined,
 	ly_ref: undefined,
-	onClick: () => {
-		console.log("default : 전달받은 이벤트가 없어요")
+	customColor: {
+		className: "default",
+		hue: 33,
+		saturation: 40,
+		lightness: 10,
 	},
+	onClick: action("clicked"),
 }
 
 export const DefaultIconed = Template.bind({})

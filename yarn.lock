@@ -1698,6 +1698,28 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@storybook/addon-a11y@^6.4.17":
+  "integrity" "sha512-uIgl9vJwY4//7i+JEu47Lgi1wOGOskHQ0+H/S8DPGcEMF2xqK/w3BjgSEWa8NPYfYyxkf/yHvCIsa99b/3phUg=="
+  "resolved" "https://registry.npmjs.org/@storybook/addon-a11y/-/addon-a11y-6.4.17.tgz"
+  "version" "6.4.17"
+  dependencies:
+    "@storybook/addons" "6.4.17"
+    "@storybook/api" "6.4.17"
+    "@storybook/channels" "6.4.17"
+    "@storybook/client-logger" "6.4.17"
+    "@storybook/components" "6.4.17"
+    "@storybook/core-events" "6.4.17"
+    "@storybook/csf" "0.0.2--canary.87bc651.0"
+    "@storybook/theming" "6.4.17"
+    "axe-core" "^4.2.0"
+    "core-js" "^3.8.2"
+    "global" "^4.4.0"
+    "lodash" "^4.17.21"
+    "react-sizeme" "^3.0.1"
+    "regenerator-runtime" "^0.13.7"
+    "ts-dedent" "^2.0.0"
+    "util-deprecate" "^1.0.2"
+
 "@storybook/addon-actions@^6.4.17", "@storybook/addon-actions@6.4.17":
   "integrity" "sha512-8TYdgzJMMKvfHvSp8N3Bsj78xGw9lNHTYkh0IE0TGGwRVOEU6xNBkao6ktXzM3gTB+6U6OZn8Y//NCzLsoTUHg=="
   "resolved" "https://registry.npmjs.org/@storybook/addon-actions/-/addon-actions-6.4.17.tgz"
@@ -4376,7 +4398,7 @@
   "resolved" "https://registry.npmjs.org/aws4/-/aws4-1.11.0.tgz"
   "version" "1.11.0"
 
-"axe-core@^4.3.5":
+"axe-core@^4.2.0", "axe-core@^4.3.5":
   "integrity" "sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA=="
   "resolved" "https://registry.npmjs.org/axe-core/-/axe-core-4.3.5.tgz"
   "version" "4.3.5"
@@ -5194,6 +5216,8 @@
 "chokidar2@file:./chokidar2":
   "resolved" "file:node_modules/@storybook/builder-webpack4/node_modules/watchpack/chokidar2"
   "version" "2.0.0"
+  dependencies:
+    "chokidar" "^2.1.8"
 
 "chownr@^1.1.1":
   "integrity" "sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg=="
