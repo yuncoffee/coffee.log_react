@@ -1,22 +1,35 @@
 import React from "react"
 import "../../styles/element/_Card.scss"
+import { useRecoilState } from "recoil"
+import { coreContentsModalAtom } from "../../recoils/CommonAtoms"
+import { boolean } from "@storybook/addon-knobs"
 
 type CardType = {
 	title?: string | undefined
 	tags?: string[] | undefined
 	image?: string | undefined
+	modalLoadingState? : any
 }
 
 function Card({
 	title = "undefined",
 	image = undefined,
 	tags = ["김", "수", "안"],
+	modalLoadingState = undefined
 }: CardType) {
+	const [coreModal, setCoreModal] = useRecoilState(coreContentsModalAtom)
+
 	return (
 		<>
 			<style jsx="true">{``}</style>
 
-			<article className="card" s-radius="16px">
+			<article
+				className="card"
+				s-radius="16px"
+				onClick={(e: any) => {
+					setCoreModal({ ...coreModal, visible: true})
+				}}
+			>
 				{image ? (
 					<div className="top">
 						<div

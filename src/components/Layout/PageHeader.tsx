@@ -42,7 +42,6 @@ function PageHeader() {
 							src="/assets/images/logo/my_logo.png"
 							alt="메인으로 돌아가는 링크입니다"
 						/>
-						<div className={`csp-logo ${coreTheme.theme}`}></div>
 					</figure>
 				</Link>
 

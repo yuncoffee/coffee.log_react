@@ -6,7 +6,6 @@ import ErrorPage from "./components/ErrorPage/ErrorPage"
 import MyPage from "./components/MyPage/MyPage"
 import MyItem from "./components/MyPage/MyItem"
 import { useRecoilState } from "recoil"
-
 import { coreThemeAtom } from "./recoils/CommonAtoms"
 
 function App() {
