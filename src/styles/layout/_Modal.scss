@@ -54,14 +54,13 @@
 }
 
 .contents{
-
     &__header{
         z-index: 8;
     }
 
     &__main{
         position: absolute;
-        top: 315px;
+        top: 336px;
         left: 0;
         width: 100%;
         height: 100%;
@@ -79,9 +78,27 @@
             border-radius: 10px;
         }
 
+        &::before{
+            content: "";
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 6px;
+            border-radius: 8px;
+            background: rgba($sy-pri, 1);
+            z-index: 8;
+        }
+
         &.scrolled{
             top: 64px;
             z-index: 9;
+
+            &::before{
+                top: 352px;
+                z-index: 10;
+            }
 
             &.start{
                 @include scrollbar($bg-a: 0, $thumb-c: $sy-gray-06, $thumb-a: 0.5);
@@ -94,26 +111,100 @@
                 &::-webkit-scrollbar-track {
                     border-radius: 10px;
                 }
-            }
-        }
 
-        .item{
-            position: relative;
-            top: 24px;
-            min-height: 100%;
-            background: rgba($sy-white, 0.1);
-            backdrop-filter: blur(30px);
-            transition: 0.2s;
-            box-shadow: 0px -8px 16px rgba(0, 0, 0, 0);
-            transition-property: box-shadow;  
-            
-            &.scrolled{
-                top: 315px;
-                background: rgba($sy-white, 0.8);
-                border-radius: 24px 24px 0 0 ;
-                box-shadow: 0px -8px 16px rgba(0, 0, 0, 0.05);
+                &.topend{
+                    &::before{
+                        top: 80px;
+                        position: fixed;
+                    }
+                }
+
             }
-            
         }
+    }
+
+    // items
+    &__item{
+        position: relative;
+        top: 24px;
+        // scroll 영역 잡기
+        padding-bottom: 232px;
+        min-height: calc(100%);
+        background: rgba($sy-white, 0.1);
+        backdrop-filter: blur(30px);
+        transition: 0.2s;
+        box-shadow: 0px -8px 16px rgba(0, 0, 0, 0);
+        transition-property: box-shadow;  
+        
+        &.scrolled{
+            // 315는 어떻게 계산되서 나온거더라
+            // banner : 200px , desc : 136px 
+            top: 336px;
+            background: rgba($sy-white, 0.8);
+            border-radius: 24px 24px 0 0 ;
+            box-shadow: 0px -8px 16px rgba(0, 0, 0, 0.05);
+        }
+    }
+    // section-0
+
+    // section-1
+    &__item-1{
+        figure{
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    &__item-2{
+        .block{
+            &__wrap{
+                width: 100%;
+                height: 200px;
+                position: relative;
+
+            }
+            &__item{
+                position: absolute;
+                width: 100%;
+            }
+            &__color{
+                width: 50%;
+                position: relative;
+                background: #48D597;
+                border-radius: 8px;
+
+                &__chip{
+                    width: 100%;
+                    height: 100%;
+                    
+                }
+            }
+
+            &__code{
+                width: 50%;
+            }
+        }
+        
+        $lengths : #00C398, #00B2A2, #000000;
+
+        @each $length in $lengths {
+            $i : index($lengths, $length);
+            .color-#{$i}{
+                right: 32px * $i;
+                background: #{$length};
+            }
+            .item-#{$i}{
+                top: 32px * $i;
+            }
+        }
+        
     }
 }

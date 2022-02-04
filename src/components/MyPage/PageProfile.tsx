@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import Button from "../Element/Button"
 import Icon from "../Element/Icon"
 import Card from "../Element/Card"
@@ -13,7 +13,11 @@ import ContentsModal from "../Layout/ContetnsModal"
 function PageProfile() {
 	const [coreCellab, setCoreCellab] = useRecoilState(coreCellabAtom)
 	const [coreModal, setCoreModal] = useRecoilState(coreContentsModalAtom)
+
 	const [modalLoadingState, setModalLoadingState] = useState(false)
+
+	const CardsRef = useRef<HTMLDivElement>(null)
+
 	useEffect(() => {
 		if (coreModal.visible) {
 			const timer = setTimeout(() => {
@@ -26,6 +30,20 @@ function PageProfile() {
 			console.log("useEffect 실행안됨")
 		}
 	}, [coreModal.visible])
+
+	useEffect(() => {
+		const bodyElem = document.querySelector("body")
+
+		if (coreModal.visible) {
+			// obj! <== null 아니고 undefined도 아니야 ㅇㅋ?
+			bodyElem!.style.overflowY = "hidden"
+
+			CardsRef.current!.style.overflowY = "hidden"
+		} else {
+			CardsRef.current!.style.overflowY = "auto"
+			bodyElem!.style.overflowY = ""
+		}
+	})
 
 	return (
 		<>
@@ -43,7 +61,7 @@ function PageProfile() {
 					coreModal.visible ? "contentsModal show" : "contentsModal"
 				}
 				onClick={(e) => {
-					console.log("어딜 누르시죠? 그건 제 잔상입니다만?")
+					// console.log("어딜 누르시죠? 그건 제 잔상입니다만?")
 					// setModalLoadingState(!modalLoadingState)
 					if (e.target === e.currentTarget) {
 						setCoreModal({ ...coreModal, visible: false })
@@ -70,6 +88,7 @@ function PageProfile() {
 						s-flex-wrap="wrap"
 						s-padding="4px"
 						style={{ overflowY: "auto" }}
+						ref={CardsRef}
 					>
 						<Card
 							title="CELLAB 코스메슈티컬 플랫폼"
