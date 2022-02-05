@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react"
 import Button from "../Element/Button"
 import Icon from "../Element/Icon"
-import Card from "../Element/Card"
+import { Card } from "../Element/Card"
 import { useRecoilState } from "recoil"
 import {
 	coreContentsModalAtom,

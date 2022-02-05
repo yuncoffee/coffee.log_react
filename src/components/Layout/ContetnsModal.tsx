@@ -8,7 +8,7 @@ import {
 	coreCellabTypeAtom,
 } from "../../recoils/CommonAtoms"
 import "../../styles/layout/_Modal.scss"
-import Carousel from "./Swiper"
+import { CaroCard, Carousel } from "./Swiper"
 
 type ContentsModalType = {
 	modalLoadingState?: boolean
@@ -29,6 +29,49 @@ function ContentsModal({
 		{ id: 1, isActive: false },
 		{ id: 2, isActive: false },
 		{ id: 3, isActive: false },
+	])
+
+	const [contentsState, setContentsState] = useState<any>([
+		{
+			id: 0,
+			image: "url(/assets/images/cellab/thumbnail.jpg) no-repeat center / cover",
+			desc: (
+				<h3>
+					MZ세대를 위해 <br />
+					<h5>미래사회의 주체가 될 MZ세대들이</h5>
+				</h3>
+			),
+		},
+		{
+			id: 1,
+			image: "url(/assets/images/cellab/thumbnail.jpg) no-repeat center / cover",
+			desc: (
+				<h3>
+					코스메슈티컬을 활용한 <br />
+					<h5>헬스케어 서비스를 제공받을 수 있도록</h5>
+				</h3>
+			),
+		},
+		{
+			id: 2,
+			image: "url(/assets/images/cellab/thumbnail.jpg) no-repeat center / cover",
+			desc: (
+				<h3>
+					헬스케어 서비스를 제공합니다 <br />
+					<h5>피부진단, 코스메슈티컬 관리 등</h5>
+				</h3>
+			),
+		},
+	])
+
+	const [bgImgState, setBgImgState] = useState([
+		// 2017
+		{ year: 2016, length: 82 },
+		{ year: 2017, length: 122 },
+		{ year: 2018, length: 198 },
+		{ year: 2019, length: 272 },
+		{ year: 2020, length: 350 },
+		{ year: 2021, length: 594.5 },
 	])
 
 	const mainContentsRef = useRef<HTMLElement>(null)
@@ -322,18 +365,38 @@ function ContentsModal({
 								s-padding="16px"
 								s-position="relative"
 								s-top="32px"
-								style={{ background: "#424242" }}
+								s-display="flex"
+								s-direction="column"
+								s-gap="16px"
 							>
 								<h3>Project Goal</h3>
+								<CaroCard contents={contentsState} />
 							</section>
 							<section
 								className="contents__item-4"
 								s-padding="16px"
 								s-position="relative"
 								s-top="32px"
-								style={{ background: "#868686" }}
 							>
 								<h3>background</h3>
+
+								<div className="background__wrap">
+									<div>
+										<h2>
+											포스트코로나 이후 코스메슈티컬에
+											대한 관심증가
+										</h2>
+										<h5>
+											포스트코로나시대의 유통과 소비시장은
+											오프라인에서 온라인으로 변화되어
+											가고 있고, 코스메슈티컬 시장이 점점
+											커져가고 있습니다 이에, 시장상황에
+											맞추어 코스메슈티컬과 소비자를
+											연결시킬 플랫폼 서비스가 필요합니다
+										</h5>
+									</div>
+									<div className="background__image">{}</div>
+								</div>
 							</section>
 							<section
 								className="contents__item-4"

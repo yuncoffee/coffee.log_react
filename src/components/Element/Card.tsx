@@ -8,14 +8,14 @@ type CardType = {
 	title?: string | undefined
 	tags?: string[] | undefined
 	image?: string | undefined
-	modalLoadingState? : any
+	modalLoadingState?: any
 }
 
 function Card({
 	title = "undefined",
 	image = undefined,
 	tags = ["김", "수", "안"],
-	modalLoadingState = undefined
+	modalLoadingState = undefined,
 }: CardType) {
 	const [coreModal, setCoreModal] = useRecoilState(coreContentsModalAtom)
 
@@ -27,7 +27,7 @@ function Card({
 				className="card"
 				s-radius="16px"
 				onClick={(e: any) => {
-					setCoreModal({ ...coreModal, visible: true})
+					setCoreModal({ ...coreModal, visible: true })
 				}}
 			>
 				{image ? (
@@ -69,4 +69,25 @@ function Card({
 	)
 }
 
-export default Card
+type CardOnlyImageType = {
+	image?: string | undefined
+}
+
+function CardOnlyImage({ image = undefined }: CardOnlyImageType) {
+	return (
+		<>
+			<style jsx="true">{``}</style>
+
+			<article className="card" s-radius="16px">
+				<div className="top">
+					<div
+						className="thumbnail"
+						style={{ background: `${image}` }}
+					></div>
+				</div>
+			</article>
+		</>
+	)
+}
+
+export { Card, CardOnlyImage }
