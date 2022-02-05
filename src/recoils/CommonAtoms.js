@@ -37,24 +37,33 @@ export const coreCellabColorAtom = atom({
 		},
 		// sub_0
 		{
-			title: "CL Sub Green",
-			rgb: "72 213 151",
-			hex: "48D597",
-			cmyk: "56 0 56 0",
+			title: "CL Green",
+			rgb: "0 195 152",
+			hex: "00C389",
+			cmyk: "77 0 67 0",
 		},
 		// sub_1
 		{
-			title: "CL Sub2 Green",
-			rgb: "72 213 151",
-			hex: "48D597",
-			cmyk: "56 0 56 0",
+			title: "CL Blue Green",
+			rgb: "0 178 162",
+			hex: "00B2A2",
+			cmyk: "92 0 51 0",
 		},
 		// sub_2
 		{
-			title: "CL Sub3 Green",
-			rgb: "72 213 151",
-			hex: "48D597",
-			cmyk: "56 0 56 0",
+			title: "CL Black",
+			rgb: "0, 0, 0",
+			hex: "000000",
+			cmyk: "0 0 0 100",
 		},
 	],
+})
+
+export const coreCellabTypeAtom = atom({
+	key: "coreCellabTypeAtom",
+	default: {
+		font: "Sandoll GothicNeo1",
+		font_desc:
+			"형태는 기능을 따른다는 원칙을 잊지않고 형태는 기능을 따른다는 원칙을 잊지않고 형태는 기능을 따른다는 원칙을 잊지않고 ",
+	},
 })
