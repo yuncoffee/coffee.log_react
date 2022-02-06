@@ -66,15 +66,15 @@ function CaroCard({
 }: CardoCardType) {
 	const [indexState, setIndexState] = useState(0)
 
-	useEffect(() => {
-		console.log(indexState)
-	}, [indexState])
+	// useEffect(() => {
+	// 	console.log(indexState)
+	// }, [indexState])
 
 	return (
 		<>
 			<style jsx="true">{`
 				.caroCard {
-					padding-bottom: 0;
+					padding: 8px;
 					width: 100%;
 					padding-right: 64px;
 				}
@@ -105,13 +105,13 @@ function CaroCard({
 					<CardOnlyImage image={contents![2].image} />
 				</SwiperSlide>
 
-				<span slot="container-end" className="caroCard__desc">
+				{/* <span slot="container-end" className="caroCard__desc">
 					{indexState === 0
 						? contents![0].desc
 						: indexState === 1
 						? contents![1].desc
 						: contents![2].desc}
-				</span>
+				</span> */}
 			</Swiper>
 		</>
 	)

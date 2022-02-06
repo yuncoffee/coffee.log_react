@@ -34,7 +34,7 @@ function ContentsModal({
 	const [contentsState, setContentsState] = useState<any>([
 		{
 			id: 0,
-			image: "url(/assets/images/cellab/thumbnail.jpg) no-repeat center / cover",
+			image: "url(/assets/images/cellab/research_01.png) no-repeat center / contain",
 			desc: (
 				<h3>
 					MZ세대를 위해 <br />
@@ -66,18 +66,19 @@ function ContentsModal({
 
 	const [bgImgState, setBgImgState] = useState([
 		// 2017
-		{ year: 2016, length: 82 },
-		{ year: 2017, length: 122 },
-		{ year: 2018, length: 198 },
-		{ year: 2019, length: 272 },
-		{ year: 2020, length: 350 },
-		{ year: 2021, length: 594.5 },
+		{ year: 2016, length: 82, isActive: false },
+		{ year: 2017, length: 122, isActive: false },
+		{ year: 2018, length: 198, isActive: false },
+		{ year: 2019, length: 272, isActive: false },
+		{ year: 2020, length: 350, isActive: false },
+		{ year: 2021, length: 594.5, isActive: true },
 	])
 
 	const mainContentsRef = useRef<HTMLElement>(null)
 	const contentsRef = useRef<HTMLDivElement>(null)
 	const colorChipRef = useRef<any>([])
 	const colorBoxRef = useRef<any>([])
+	const bgGraphRef = useRef<any>([])
 	const [mainTopState, setMainTopState] = useState(0)
 	useEffect(() => {
 		const mainContents = mainContentsRef.current
@@ -254,6 +255,7 @@ function ContentsModal({
 								</figure>
 								<h6>{coreCellab.brand_desc}</h6>
 							</section>
+							{/* section_color */}
 							<section
 								className="contents__item-2"
 								s-padding="16px"
@@ -335,6 +337,7 @@ function ContentsModal({
 									})}
 								</div>
 							</section>
+							{/* section_typo */}
 							<section
 								className="contents__item-3"
 								s-padding="16px"
@@ -360,6 +363,7 @@ function ContentsModal({
 									</figure>
 								</div>
 							</section>
+							{/* section_goal */}
 							<section
 								className="contents__item-4"
 								s-padding="16px"
@@ -370,18 +374,42 @@ function ContentsModal({
 								s-gap="16px"
 							>
 								<h3>Project Goal</h3>
-								<CaroCard contents={contentsState} />
+								<div
+									className="text__wrap"
+									s-display="flex"
+									s-gap="4px"
+									s-direction="column"
+								>
+									<h4>
+										MZ세대를 위한 코스메슈티컬 헬스케어
+										플랫폼 서비스
+									</h4>
+									<h6>
+										미래사회의 주체가 될 MZ세대를 기반으로
+										코스메슈티컬을 통해 헬스케어를 이루어낼
+										수 있도록 진단, 구매, 관리 기능을 통해
+										코스메슈티컬을 제공하는 디지털 플랫폼을
+										서비스합니다
+									</h6>
+								</div>
+
+								<figure>
+									<img
+										src="/assets/images/cellab/project_goal.png"
+										alt="프로젝트 목표"
+									/>
+								</figure>
 							</section>
+							{/* section_background */}
 							<section
-								className="contents__item-4"
+								className="contents__item-5"
 								s-padding="16px"
 								s-position="relative"
 								s-top="32px"
 							>
 								<h3>background</h3>
-
 								<div className="background__wrap">
-									<div>
+									<div className="background__text for_graph">
 										<h2>
 											포스트코로나 이후 코스메슈티컬에
 											대한 관심증가
@@ -395,11 +423,67 @@ function ContentsModal({
 											연결시킬 플랫폼 서비스가 필요합니다
 										</h5>
 									</div>
-									<div className="background__image">{}</div>
+									<div
+										className="background__image"
+										s-display="flex"
+										s-gap="24px"
+										s-align="flex-end"
+										s-justify="flex-end"
+										s-margin-right="32px"
+									>
+										{bgImgState.map((item, i) => {
+											return (
+												<div
+													key={i}
+													s-display="flex"
+													s-direction="column"
+													s-gap="4px"
+													s-align="center"
+													data-index={i}
+													className={
+														item.isActive
+															? "background__image__item isActive"
+															: "background__image__item"
+													}
+													ref={(el) => {
+														bgGraphRef.current[i] =
+															el
+													}}
+												>
+													<h4>{item.length}</h4>
+													<div
+														className="percent"
+														style={{
+															height: `${
+																item.length / 2
+															}px`,
+														}}
+													></div>
+													<h6>{item.year}</h6>
+												</div>
+											)
+										})}
+									</div>
+								</div>
+								<CaroCard contents={contentsState} />
+								<div className="background__text for_research">
+									<h2>
+										소비트렌드를 주도하는 MZ세대를 반영한
+										서비스 필요
+									</h2>
+									<h5>
+										이들의 성향을 점검하기 위해 실제 MZ세대
+										여성을 대상으로 설문을 실시한 결과,
+										이들이 확실히 디지털 특히 모바일 환경에
+										익숙한 세대이며, 소비에 있어 효율성,
+										합리성에 초점을 맞추고 있고, 어떻게 하면
+										더 편하고 합리적인 소비를 할 수 있을지
+										고민이 많다는 점도 알 수 있었습니다.
+									</h5>
 								</div>
 							</section>
 							<section
-								className="contents__item-4"
+								className="contents__item-5"
 								s-padding="16px"
 								s-position="relative"
 								s-top="32px"
